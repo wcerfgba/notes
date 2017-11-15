@@ -1,4 +1,4 @@
-import Note from '../../concepts/note';
+import Note from '../note';
 import getDatabase from '../get_database';
 
 export default function storeNote(note : Note) {

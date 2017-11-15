@@ -1,5 +1,6 @@
 import { h, render, Component } from 'preact';
-import { default as PersistentNote } from '../../../persistence/concepts/note';
+import { default as PersistentNote } from '../../persistence/note';
+import './Note.scss';
 
 export default class Note extends Component<NoteProps, NoteState> {
   render() : JSX.Element {

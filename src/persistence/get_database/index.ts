@@ -1,9 +1,13 @@
 import * as PouchDB from 'pouchdb';
-import Note from '../../concepts/note';
+import Note from '../note';
 
 const getDatabase : () => PouchDB.Database<Note> = (() => {
-  let DATABASE;
-  return () => DATABASE = DATABASE || newDatabase()
+  let DATABASE : PouchDB.Database<Note>;
+  return () => {
+    DATABASE = DATABASE || newDatabase();
+    console.log('getDatabase');
+    return DATABASE;
+  };
 })();
 export default getDatabase;
 

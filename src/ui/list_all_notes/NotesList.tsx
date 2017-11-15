@@ -1,5 +1,5 @@
 import { h, render, Component } from 'preact';
-import { default as PersistentNote } from '../../../persistence/concepts/note';
+import { default as PersistentNote } from '../../persistence/note';
 import Note from '../view_a_note/Note';
 
 export default class NotesList extends Component<NotesListProps, NotesListState> {

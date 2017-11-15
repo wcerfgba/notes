@@ -1,8 +1,8 @@
 import * as Rx from 'rxjs';
 import { h, render, Component } from 'preact';
-import { AllNotes } from '../../../persistence/capabilities/get_all_notes';
-import AllNotesObservable from '../../../persistence/capabilities/get_all_notes/AllNotesObservable';
-import PersistentNote from '../../../persistence/concepts/note';
+import { AllNotes } from '../../persistence/get_all_notes';
+import getAllNotesObservable from '../../persistence/get_all_notes/AllNotesObservable';
+import PersistentNote from '../../persistence/note';
 import NotesList from './NotesList';
 
 export default class AllNotesList extends Component<AllNotesListProps, AllNotesListState> {
@@ -15,14 +15,14 @@ export default class AllNotesList extends Component<AllNotesListProps, AllNotesL
     this.setState({
       allNotesSubscription: 
         this.state.allNotesSubscription 
-        || AllNotesObservable.subscribe(this.allNotesObserver)
+        || getAllNotesObservable().subscribe(this.allNotesObserver)
     });
   }
 
   allNotesObserver : Rx.Observer<AllNotes> = {
-    next: allNotes => { console.log(allNotes); this.setState({ allNotes }) },
-    error: err => ({}),
-    complete: () => ({}),
+    next: allNotes => { console.log('next'); this.setState({ allNotes }) },
+    error: err => { console.log(err); },
+    complete: () => { console.log('complete'); },
   };
 
   render() {
@@ -36,6 +36,6 @@ export default class AllNotesList extends Component<AllNotesListProps, AllNotesL
 
 export type AllNotesListProps = {};
 export type AllNotesListState = {
-  allNotesSubscription : Rx.Subscription,
+  allNotesSubscription : Rx.Subscription | undefined,
   allNotes : Array<PersistentNote>
 };
