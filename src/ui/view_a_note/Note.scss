@@ -1,19 +1,63 @@
+@import '../canvas/breakpoints';
+@import '../canvas/colours';
+
 .note {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
+  $note-grid-column-gap: 2rem;
+  grid-column-gap: $note-grid-column-gap;
+  margin-bottom: 1.5rem;
 
-  .note-time {
+  @media (min-width: $breakpoint-tablet-lower) {
+    $min-third: ($breakpoint-tablet-lower - 2*$note-grid-column-gap) / 3;
+    grid-template-columns: minmax($min-third, 1fr) 4fr;
+  }
 
+  @media (min-width: $breakpoint-laptop-lower) {
+    $min-fifth: ($breakpoint-laptop-lower - 2*$note-grid-column-gap) / 5;
+    grid-template-columns: minmax($min-fifth, 1fr) 3fr minmax(0, 1fr);
+  }
+
+  @mixin note-child {
+    margin-bottom: 1rem;
+  }
+
+  .note-datetime {
+    @include note-child;
+
+    display: flex;
+    justify-content: space-between;
+
+    @media (min-width: $breakpoint-tablet-lower) {
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .note-date {
+      margin-bottom: 0.5rem;
+    }
   }
 
   .note-text {
-
+    @include note-child;
   }
 
   .note-tags {
+    @include note-child;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+
+    @media 
+    (min-width: $breakpoint-tablet-lower) and 
+    (max-width: $breakpoint-tablet-upper) {
+      grid-column: 2;
+    }
    
     .note-tag {
-      
+      border-top: 1px solid $colour-grey;
+      margin: 0 0.5rem 0.5rem 0;
     }
   }
 }

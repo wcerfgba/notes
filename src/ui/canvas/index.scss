@@ -1,9 +1,12 @@
 @import '~normalize.css';
+@import 'breakpoints';
 
 html, body {
   font-family: sans-serif;
 }
 
 body {
-  margin: 2rem;
+  margin: auto;
+  padding: 2rem;
+  max-width: $breakpoint-laptop-lower;
 }

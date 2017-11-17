@@ -10,9 +10,18 @@ export default class Note extends Component<NoteProps, NoteState> {
         id={`note-${this.props.note._id}`}
       >
         <div
-          className="note-time"
+          className="note-datetime"
         >
-          {this.props.note.time}
+          <div
+            className="note-date"
+          >
+            {this.niceDate()}
+          </div>
+          <div
+            className="note-time"
+          >
+            {this.niceTime()}
+          </div>
         </div>
         <div
           className="note-text"
@@ -26,6 +35,16 @@ export default class Note extends Component<NoteProps, NoteState> {
         </div>
       </div>
     );
+  }
+
+  niceDate() : string {
+    const d = new Date(this.props.note.time);
+    return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+  }
+
+  niceTime() : string {
+    const d = new Date(this.props.note.time);
+    return `${d.getHours()}:${d.getMinutes()}`;
   }
 
   renderTags() : Array<JSX.Element> {
