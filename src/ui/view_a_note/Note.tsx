@@ -5,7 +5,7 @@ import lowerOrderComponent from '../lower_order_component';
 import './Note.scss';
 
 export class Note extends Component<NoteProps, NoteState> {
-  noteText : Element | undefined;
+  noteText : HTMLDivElement | undefined;
 
   render() : JSX.Element {
     return (
@@ -29,6 +29,7 @@ export class Note extends Component<NoteProps, NoteState> {
         </div>
         <div
           className="note-text"
+          // @ts-ignore
           ref={(el) => { this.noteText = el }}
         >
           {this.props.note.text}

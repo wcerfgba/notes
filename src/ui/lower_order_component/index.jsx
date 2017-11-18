@@ -25,7 +25,7 @@ export default function lowerOrderComponent(WrappedComponent) {
   const originalComponentDidMount = searchProto(WrappedComponent, 'componentDidMount');
   WrappedComponent.prototype.componentDidMount = function () {
     originalComponentDidMount && originalComponentDidMount();
-    WrappedComponent.decorators.forEach(decorator => decorator(this));
+    WrappedComponent.decorators.forEach(decorator => decorator.apply(this));
   };
   return WrappedComponent;
 }
