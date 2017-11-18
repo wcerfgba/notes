@@ -1,6 +1,7 @@
 import { h, render } from 'preact';
 import AllNotesList from '../ui/list_all_notes/AllNotesList';
 import getDatabase from '../persistence/get_database';
+import '../ui/edit_a_note';
 import '../ui/canvas/index.scss';
 
 // @ts-ignore: its fiiine

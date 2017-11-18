@@ -11,6 +11,11 @@ module.exports = {
         exclude: /node_modules/
       },
       {
+        test: /\.jsx?$/,
+        use: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
         test: /\.scss$/,
         use: [
           'style-loader',
@@ -25,7 +30,7 @@ module.exports = {
     open: false
   },
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js' ]
+    extensions: [ '.tsx', '.ts', '.js', '.jsx' ]
   },
   output: {
     filename: 'bundle.js',

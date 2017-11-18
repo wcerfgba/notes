@@ -1,8 +1,12 @@
 import { h, render, Component } from 'preact';
 import { default as PersistentNote } from '../../persistence/note';
+// @ts-ignore
+import lowerOrderComponent from '../lower_order_component';
 import './Note.scss';
 
-export default class Note extends Component<NoteProps, NoteState> {
+export class Note extends Component<NoteProps, NoteState> {
+  noteText : Element | undefined;
+
   render() : JSX.Element {
     return (
       <div
@@ -25,6 +29,7 @@ export default class Note extends Component<NoteProps, NoteState> {
         </div>
         <div
           className="note-text"
+          ref={(el) => { this.noteText = el }}
         >
           {this.props.note.text}
         </div>
@@ -63,3 +68,7 @@ export type NoteProps = {
 };
 
 export type NoteState = {};
+
+// @ts-ignore: heeeelp
+const LowerOrderNote = lowerOrderComponent(Note);
+export default LowerOrderNote;
