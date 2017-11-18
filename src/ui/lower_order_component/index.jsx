@@ -7,38 +7,43 @@ import { h, render, Component } from 'preact';
 // type HigherOrderComponent = MonadicConstructor<AnyComponent, AnyComponent>;
 
 export default function lowerOrderComponent(WrappedComponent) {
-  const decorators = [];
-  // const handler = {
-  //   get: (obj, prop) => {
-  //     if (prop === 'decorators') {
-  //       return decorators;
-  //     }
-  //     if (prop === 'render') {
-  //       return () => {
-  //         return decorators
-  //           .reduce((acc, next) => next(acc), obj);
-  //       }
-  //     }
-  //     return obj[prop];
+  // const decorators = [];
+  // return class extends WrappedComponent {
+  //   static get decorators() {
+  //     return decorators;
+  //   }
+
+  //   componentDidMount() {
+  //     console.log('mounted in loc');
+  //     console.log(this);
+  //     //super.componentDidMount();
+  //     decorators.forEach(decorator => decorator(this));
   //   }
   // };
-  // return new Proxy(component, handler);
-  return class extends WrappedComponent {
-    static get decorators() {
-      return decorators;
-    }
 
-    componentDidMount() {
-      console.log('mounted in loc');
-      console.log(this);
-      //super.componentDidMount();
-      decorators.forEach(decorator => decorator(this));
-    }
-
-    // render() {
-    //   const wrapped = super.render();
-    //   return decorators
-    //     .reduce((acc, next) => next(acc), wrapped);
-    // }
+  WrappedComponent.decorators = [];
+  const originalComponentDidMount = searchProto(WrappedComponent, 'componentDidMount');
+  WrappedComponent.prototype.componentDidMount = function () {
+    originalComponentDidMount && originalComponentDidMount();
+    WrappedComponent.decorators.forEach(decorator => decorator(this));
   };
+  return WrappedComponent;
 }
+
+const searchProto = (o, p) => {
+  while (o.prototype != null) {
+    if ( o.prototype.hasOwnProperty(p) ) { return o.prototype[p]; }
+    o = o.prototype;
+  }
+  return null;
+};
+
+
+
+// Random shit we don't need but lol
+const newProp = (o) => {
+  const Gp = () => Math.random().toString();
+  let p;
+  while ( o.hasOwnProperty( p = Gp() ) );
+  return p;
+};
