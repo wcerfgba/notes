@@ -1,33 +1,38 @@
 import { h, render, Component  } from 'preact';
+import * as Rx from 'rxjs';
 import { Note, default as LowerOrderNote } from '../view_a_note/Note';
 import storeNote from '../../persistence/store_note';
+import { Event } from '_debugger';
 
 LowerOrderNote.decorators.push(
-  function (this : Note) {
-    makeNoteTextEditable.apply(this);
-    installStoreNoteOnTextChange.apply(this);
+  (component : Note) => {
+    makeNoteTextEditable(component);
+    installStoreNoteOnTextChange(component);
   }
 );
 
-// TODO: fix types
-function makeNoteTextEditable(this : Note) {
-  if (this.noteText !== undefined) {
-    this.noteText.setAttribute('contenteditable', 'true');
+const makeNoteTextEditable = (component : Note) => {
+  if (component.noteText !== undefined) {
+    component.noteText.setAttribute('contenteditable', 'true');
   }
-}
+};
 
-function installStoreNoteOnTextChange(this : Note) {
-  if (this.noteText !== undefined) {
-    this.noteText.addEventListener('input', (e) => {
+const installStoreNoteOnTextChange = (component : Note) => {
+  if (component.noteText !== undefined) {
+    const inputs = Rx.Observable.fromEvent<InputEvent>(component.noteText, 'input');
+    inputs
+    .debounceTime(1000)
+    .subscribe(e => {
       const text = (<HTMLDivElement>e.target).innerHTML;
-      this.props.note.text = text;
+      component.props.note.text = text;
       storeNote({
-        ...this.props.note,
-        text
-      })
-      .then(response => {
-        this.props.note._rev = response.rev;
+        ...component.props.note,
+        text: text + '!'
       });
     });
   }
-}
+};
+
+type InputEvent = Event & {
+  target : Element
+};
