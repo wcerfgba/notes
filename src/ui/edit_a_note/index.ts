@@ -4,35 +4,38 @@ import { Note, default as LowerOrderNote } from '../view_a_note/Note';
 import storeNote from '../../persistence/store_note';
 import { Event } from '_debugger';
 
-LowerOrderNote.decorators.push(
-  (component : Note) => {
-    makeNoteTextEditable(component);
-    installStoreNoteOnTextChange(component);
+LowerOrderNote.reopen.componentDidMount = [];
+
+LowerOrderNote.reopen.componentDidMount.push(
+  function (this : Note) {
+    console.log('editablifying', this);
+    makeNoteTextEditable.call(this);
+    installStoreNoteOnTextChange.call(this);
   }
 );
 
-const makeNoteTextEditable = (component : Note) => {
-  if (component.noteText !== undefined) {
-    component.noteText.setAttribute('contenteditable', 'true');
+function makeNoteTextEditable(this : Note) {
+  if (this.noteText !== undefined) {
+    this.noteText.setAttribute('contenteditable', 'true');
   }
 };
 
-const installStoreNoteOnTextChange = (component : Note) => {
-  if (component.noteText !== undefined) {
-    const inputs = Rx.Observable.fromEvent<InputEvent>(component.noteText, 'input');
+function installStoreNoteOnTextChange(this : Note) {
+  // @ts-ignore
+  console.log(`installing change`, this);
+  // @ts-ignore
+  if (this.noteText !== undefined) {
+    // @ts-ignore
+    const inputs = Rx.Observable.fromEvent(this.noteText, 'input');
     inputs
     .debounceTime(1000)
     .subscribe(e => {
-      const text = (<HTMLDivElement>e.target).innerHTML;
-      component.props.note.text = text;
-      storeNote({
-        ...component.props.note,
-        text: text + '!'
-      });
+      // @ts-ignore
+      const text = e.target.innerHTML;
+      // @ts-ignore
+      this.props.note.text = text + '!';
+      // @ts-ignore
+      storeNote(this.props.note);
     });
   }
-};
-
-type InputEvent = Event & {
-  target : Element
 };
