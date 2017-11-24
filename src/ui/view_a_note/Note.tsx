@@ -1,7 +1,7 @@
 import { h, render, Component } from 'preact';
 import { default as PersistentNote } from '../../persistence/note';
-// @ts-ignore
-import lowerOrderComponent from '../lower_order_component';
+// @ts-ignore: untyped metaprogramming
+import reopenable from '../reopenable';
 import './Note.scss';
 
 export class Note extends Component<NoteProps, NoteState> {
@@ -70,6 +70,5 @@ export type NoteProps = {
 
 export type NoteState = {};
 
-// @ts-ignore: heeeelp
-const LowerOrderNote = lowerOrderComponent(Note);
-export default LowerOrderNote;
+const ReopenableNote = reopenable(Note);
+export default ReopenableNote;
