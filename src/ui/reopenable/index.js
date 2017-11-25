@@ -1,5 +1,3 @@
-import { h, render, Component } from 'preact';
-
 const reopenable = (klass) => {
   klass.reopen = newBadMultiMap();
   const origProto = klass.prototype;

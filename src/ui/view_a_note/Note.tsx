@@ -15,17 +15,20 @@ export class Note extends Component<NoteProps, NoteState> {
         className="note"
         id={`note-${this.props.note._id}`}
       >
-        {this.renderTime()}
+        <div
+          className="note-time"
+        >
+          {this.renderTime()}
+        </div>
         <div
           className="note-text"
-          ref={(el) => { this.noteText = el }}
         >
-          {this.props.note.text}
+          {this.renderText()}
         </div>
         <div
           className="note-tags"
         >
-          {...this.renderTags()}
+          {this.renderTags()}
         </div>
       </div>
     );
@@ -33,9 +36,7 @@ export class Note extends Component<NoteProps, NoteState> {
 
   renderTime() {
     return (
-      <div
-        className="note-time"
-      >
+      <div>
         <div
           className="note-time-date"
           ref={(el) => { this.noteDate = el }}
@@ -62,14 +63,28 @@ export class Note extends Component<NoteProps, NoteState> {
     return `${d.getHours()}:${d.getMinutes()}`;
   }
 
-  renderTags() : Array<JSX.Element> {
-    return this.props.note.tags.map((tag : string) => (
+  renderText() : JSX.Element {
+    return (
       <div
-        className={`note-tag note-tag-${tag}`}
+        ref={(el) => { this.noteText = el }}
       >
-        {tag}
+        {this.props.note.text}
       </div>
-    ));
+    );
+  }
+
+  renderTags() : JSX.Element {
+    return (
+      <div>
+        {...this.props.note.tags.map((tag : string) => (
+          <div
+            className={`note-tag note-tag-${tag}`}
+          >
+            {tag}
+          </div>
+        ))}
+      </div>
+    );
   }
 }
 
