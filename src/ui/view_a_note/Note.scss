@@ -22,19 +22,16 @@
     margin-bottom: 1rem;
   }
 
-  .note-datetime {
+  .note-time {
     @include note-child;
 
     display: flex;
     justify-content: space-between;
+    margin-bottom: 0.5rem;
 
     @media (min-width: $breakpoint-tablet-lower) {
       flex-direction: column;
       justify-content: flex-start;
-    }
-
-    .note-date {
-      margin-bottom: 0.5rem;
     }
   }
 

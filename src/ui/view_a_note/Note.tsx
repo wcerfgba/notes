@@ -5,7 +5,9 @@ import reopenable from '../reopenable';
 import './Note.scss';
 
 export class Note extends Component<NoteProps, NoteState> {
-  noteText : HTMLDivElement | undefined;
+  noteText : Element | undefined;
+  noteDate : Element | undefined;
+  noteTime : Element | undefined;
 
   render() : JSX.Element {
     return (
@@ -13,23 +15,9 @@ export class Note extends Component<NoteProps, NoteState> {
         className="note"
         id={`note-${this.props.note._id}`}
       >
-        <div
-          className="note-datetime"
-        >
-          <div
-            className="note-date"
-          >
-            {this.niceDate()}
-          </div>
-          <div
-            className="note-time"
-          >
-            {this.niceTime()}
-          </div>
-        </div>
+        {this.renderTime()}
         <div
           className="note-text"
-          // @ts-ignore
           ref={(el) => { this.noteText = el }}
         >
           {this.props.note.text}
@@ -38,6 +26,27 @@ export class Note extends Component<NoteProps, NoteState> {
           className="note-tags"
         >
           {...this.renderTags()}
+        </div>
+      </div>
+    );
+  }
+
+  renderTime() {
+    return (
+      <div
+        className="note-time"
+      >
+        <div
+          className="note-time-date"
+          ref={(el) => { this.noteDate = el }}
+        >
+          {this.niceDate()}
+        </div>
+        <div
+          className="note-time-time"
+          ref={(el) => { this.noteTime = el }}
+        >
+          {this.niceTime()}
         </div>
       </div>
     );

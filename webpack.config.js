@@ -22,6 +22,13 @@ module.exports = {
           'css-loader',
           'sass-loader'
         ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ]
       }
     ]
   },
@@ -30,7 +37,13 @@ module.exports = {
     open: false
   },
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js', '.jsx' ]
+    extensions: [ '.tsx', '.ts', '.js', '.jsx' ],
+    alias: {
+      'react': 'preact-compat',
+      'react-dom': 'preact-compat',
+      // Not necessary unless you consume a module using `createClass`
+      'create-react-class': 'preact-compat/lib/create-react-class'
+    }
   },
   output: {
     filename: 'bundle.js',
