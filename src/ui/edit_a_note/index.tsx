@@ -9,46 +9,69 @@ import { Note, default as ReopenableNote } from '../view_a_note/Note';
 import makeElementEditable from '../make_element_editable';
 import './Note.scss';
 
-ReopenableNote.reopen.constructor.push(
-//  makeNoteTextEditable
-);
-
 ReopenableNote.reopen.render.push(
-  makeNoteTextEditable3
+  makeNoteTimeEditable,
+  makeNoteTextEditable
 );
 
-ReopenableNote.reopen.renderTime.push(
-  makeNoteTimeEditable
-);
-
-function makeNoteTextEditable(this : Note, constructor : any) {
-  if (this.noteText !== undefined) {
-    makeElementEditable(this.noteText as HTMLElement, (text : string) => {
-      this.props.note.text = text + '!';
-      storeNote(this.props.note);
-    });
+function makeNoteTimeEditable(this : Note, render : () => JSX.Element) {
+  return () => {
+    const result = render.apply(this);
+    const noteTimeChildIndex = R.findIndex(R.propEq('key', 'note-time'), result.children);
+    result.children[noteTimeChildIndex] = (
+      <EditableNoteTime
+        note={this.props.note}
+      />
+    );
+    return result;
   }
-  return constructor;
 }
 
-// function makeNoteTextEditable2(this : Note, render : () => JSX.Element) {
-//   return () => {
-//     const children = render.apply(this);
-//     const noteTextElement = getChildWithKeyFromElement('note-text', children);
-//     if (noteTextElement != null) {
-//       noteTextElement.attributes.ref = (el : HTMLElement) => {
-//         if (el == null) { return; }
-//         makeElementEditable(el, (text : string) => {
-//           this.props.note.text = text + '!';
-//           storeNote(this.props.note);
-//         });
-//       }
-//     }
-//     return children;
-//   };
-// }
+const EditableNoteTime = (props : {note : PersistentNote}) => {
+  const onChangeSubject = new Rx.Subject<moment.Moment>();
+  onChangeSubject
+    .debounceTime(333)
+    .subscribe((time : moment.Moment) => {
+      storeNote({
+        ...props.note,
+        time: time.toISOString()
+      });
+    });
+  const timeMoment = moment(props.note.time);
+  return (
+    <div
+      className="note-time"
+      key="note-time"
+    >
+      <DateTime
+        value={timeMoment}
+        onChange={(time : moment.Moment) => onChangeSubject.next(time)}
+        renderInput={(inputProps : any, openCalendar : () => void) => (
+          <div
+            className="note-time-inner"
+            onClick={openCalendar}
+          >
+            <div
+              className="note-time-date"
+            >
+              {timeMoment.format('YYYY-MM-DD')}
+            </div>
+            <div
+              className="note-time-time"
+            >
+              {timeMoment.format('HH:mm')}
+            </div>
+          </div>
+        )}
+      />
+    </div>
+  );
+};
 
-function makeNoteTextEditable3(this : Note, render : () => JSX.Element) {
+// @ts-ignore
+const DateTime = (props) => <Datetime {...props} />
+
+function makeNoteTextEditable(this : Note, render : () => JSX.Element) {
   return () => {
     const result = render.apply(this);
     const noteTextChildIndex = R.findIndex(R.propEq('key', 'note-text'), result.children);
@@ -72,7 +95,7 @@ const EditableNoteText = (props : { note : PersistentNote }) => (
         if (el != undefined) {
           const inputs = Rx.Observable.fromEvent<Event>(el, 'input');
           return inputs
-            .debounceTime(1000)
+            .debounceTime(333)
             .subscribe((e : Event) => {
               const text = (el as HTMLTextAreaElement).value;
               storeNote({
@@ -86,28 +109,3 @@ const EditableNoteText = (props : { note : PersistentNote }) => (
     </textarea>
   </div>
 );
-
-function makeNoteTimeEditable(this : Note, renderTime : any) {
-  return () => {
-    const onChangeSubject = new Rx.Subject<moment.Moment>();
-    onChangeSubject
-    .debounceTime(1000)
-    .subscribe((time : moment.Moment) => {
-      this.props.note.time = time.toISOString();
-      storeNote(this.props.note);
-    });
-    return (
-      <div
-        className="note-time"
-      >
-        <DateTime
-          value={moment(this.props.note.time)}
-          onChange={(time : moment.Moment) => onChangeSubject.next(time)}
-        />
-      </div>
-    )
-  };
-}
-
-// @ts-ignore
-const DateTime = (props) => <Datetime {...props} />

@@ -1,15 +1,35 @@
 @import '~react-datetime/css/react-datetime.css';
+@import '../canvas/colours';
+@import '../canvas/breakpoints';
 
 .note {
   .note-time {
+    display: block;
+
     .form-control {
       width: 100%;
+      border: none;
+    }
+
+    .note-time-inner {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+
+      @media (min-width: $breakpoint-tablet-lower) {
+        flex-direction: column;
+        justify-content: flex-start;
+      }
     }
   }
 
   .note-text {
     textarea {
       width: 100%;
+      height: 5rem;
+      border: none;
+      border-bottom: 1px solid $colour-grey;
+      resize: vertical;
     }
   }
 }

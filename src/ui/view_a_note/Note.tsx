@@ -5,10 +5,6 @@ import reopenable from '../reopenable';
 import './Note.scss';
 
 export class Note extends Component<NoteProps, NoteState> {
-  noteText : Element | undefined;
-  noteDate : Element | undefined;
-  noteTime : Element | undefined;
-
   render() : JSX.Element {
     return (
       <div
@@ -17,38 +13,30 @@ export class Note extends Component<NoteProps, NoteState> {
       >
         <div
           className="note-time"
+          key="note-time"
         >
-          {this.renderTime()}
+          <div
+            className="note-time-date"
+          >
+            {this.niceDate()}
+          </div>
+          <div
+            className="note-time-time"
+          >
+            {this.niceTime()}
+          </div>
         </div>
         <div
           className="note-text"
           key="note-text"
         >
-          {this.renderText()}
+          {this.props.note.text}
         </div>
         <div
           className="note-tags"
+          key="note-tags"
         >
-          {this.renderTags()}
-        </div>
-      </div>
-    );
-  }
-
-  renderTime() {
-    return (
-      <div>
-        <div
-          className="note-time-date"
-          ref={(el) => { this.noteDate = el }}
-        >
-          {this.niceDate()}
-        </div>
-        <div
-          className="note-time-time"
-          ref={(el) => { this.noteTime = el }}
-        >
-          {this.niceTime()}
+          {...this.renderTags()}
         </div>
       </div>
     );
@@ -64,27 +52,15 @@ export class Note extends Component<NoteProps, NoteState> {
     return `${d.getHours()}:${d.getMinutes()}`;
   }
 
-  renderText() : JSX.Element {
-    return (
-      <div
-        ref={(el) => { this.noteText = el }}
-      >
-        {this.props.note.text}
-      </div>
-    );
-  }
-
-  renderTags() : JSX.Element {
-    return (
-      <div>
-        {...this.props.note.tags.map((tag : string) => (
-          <div
-            className={`note-tag note-tag-${tag}`}
-          >
-            {tag}
-          </div>
-        ))}
-      </div>
+  renderTags() : Array<JSX.Element> {
+    return this.props.note.tags.map(
+      (tag : string) => (
+        <div
+          className={`note-tag note-tag-${tag}`}
+        >
+          {tag} 
+        </div>
+      )
     );
   }
 }
