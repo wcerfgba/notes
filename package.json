@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@types/pouchdb": "^6.3.1",
+    "@types/ramda": "^0.25.6",
     "babel-preset-stage-3": "^6.24.1",
     "normalize.css": "^7.0.0",
     "pouchdb": "6.2.0",
     "preact": "^8.2.6",
     "preact-compat": "^3.17.0",
+    "ramda": "^0.25.0",
     "react-datetime": "^2.11.0",
     "rxjs": "^5.5.2"
   },

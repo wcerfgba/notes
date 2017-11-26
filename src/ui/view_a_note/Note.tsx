@@ -22,6 +22,7 @@ export class Note extends Component<NoteProps, NoteState> {
         </div>
         <div
           className="note-text"
+          key="note-text"
         >
           {this.renderText()}
         </div>

@@ -1,0 +1,15 @@
+@import '~react-datetime/css/react-datetime.css';
+
+.note {
+  .note-time {
+    .form-control {
+      width: 100%;
+    }
+  }
+
+  .note-text {
+    textarea {
+      width: 100%;
+    }
+  }
+}
