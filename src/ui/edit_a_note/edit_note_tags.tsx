@@ -5,10 +5,11 @@ import storeNote from '../../persistence/store_note';
 import PersistentNote from '../../persistence/note';
 import { Note, default as ReopenableNote } from '../view_a_note/Note';
 import AddTagButton from './AddTagButton';
+import EditableTag from './EditableTag';
 
 ReopenableNote.reopen.render.push(
   addAddTagButton,
-  //makeNoteTagsEditable
+  makeNoteTagsEditable
 );
 
 type NullaryDecorator<T, Y> = (this : T, f : () => Y) => () => Y;
@@ -17,7 +18,6 @@ function addAddTagButton(this : Note, render : () => JSX.Element) : NullaryDecor
   return () => {
     const result = render.apply(this);
     const noteTags : JSX.Element = R.find(R.propEq('key', 'note-tags'), result.children);
-    console.log(noteTags);
     noteTags.children = noteTags.children || [];
     noteTags.children.push(
       <AddTagButton
@@ -29,15 +29,22 @@ function addAddTagButton(this : Note, render : () => JSX.Element) : NullaryDecor
   }
 }
 
-function makeNoteTextEditable(this : Note, render : () => JSX.Element) {
+function makeNoteTagsEditable(this : Note, render : () => JSX.Element) {
   return () => {
     const result = render.apply(this);
-    const noteTextChildIndex = R.findIndex(R.propEq('key', 'note-text'), result.children);
-    result.children[noteTextChildIndex] = (
-      <EditableNoteText
-        note={this.props.note}
-      />
-    );
+    const noteTagsIndex = R.findIndex(R.propEq('key', 'note-tags'), result.children);
+    console.log(result.children[noteTagsIndex]);
+    result.children[noteTagsIndex].children =
+      result
+        .children[noteTagsIndex]
+        .children
+        .map((tag : JSX.Element, index : number) => (
+          <EditableTag
+            note={this.props.note}
+            tagIndex={index}
+          />
+        ));
+        console.log(result.children[noteTagsIndex]);
     return result;
   }
 }
