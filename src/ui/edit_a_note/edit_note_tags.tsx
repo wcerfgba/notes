@@ -8,8 +8,8 @@ import AddTagButton from './AddTagButton';
 import EditableTag from './EditableTag';
 
 ReopenableNote.reopen.render.push(
-  addAddTagButton,
-  makeNoteTagsEditable
+  makeNoteTagsEditable,
+  addAddTagButton
 );
 
 type NullaryDecorator<T, Y> = (this : T, f : () => Y) => () => Y;
@@ -34,6 +34,7 @@ function makeNoteTagsEditable(this : Note, render : () => JSX.Element) {
     const result = render.apply(this);
     const noteTagsIndex = R.findIndex(R.propEq('key', 'note-tags'), result.children);
     console.log(result.children[noteTagsIndex]);
+    result.children[noteTagsIndex].children = result.children[noteTagsIndex].children || [];
     result.children[noteTagsIndex].children =
       result
         .children[noteTagsIndex]

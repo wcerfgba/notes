@@ -8,9 +8,12 @@ export default class AddTagButton extends Component<AddTagButtonProps, AddTagBut
     if (this.state.editing) {
       return (
         <SingleLineTextField
-          className="note-tags-add-button-editing"
+          className="note-tag note-tags-add-button-editing"
           autoFocus={true}
           onChange={this.addTag}
+          onBlur={() => this.setState({
+            editing: false
+          })}
         />
       );
     } else {
@@ -27,7 +30,7 @@ export default class AddTagButton extends Component<AddTagButtonProps, AddTagBut
     }
   }
 
-  addTag(tag : string) {
+  addTag = (tag : string) => {
     this.setState({
       editing: false
     }, () => {

@@ -11,6 +11,9 @@ export default class EditableTag extends Component<EditableTagProps, EditableTag
           className={`note-tag note-tag-${this.value}-editing`}
           autoFocus={true}
           onChange={this.updateTag}
+          onBlur={() => this.setState({
+            editing: false
+          })}
           value={this.value}
         />
       );
@@ -42,7 +45,7 @@ export default class EditableTag extends Component<EditableTagProps, EditableTag
     }, () => {
       storeNote({
         ...this.props.note,
-        tags
+        tags: tags.filter((tag : string) => tag && true)
       })
     })
   };
