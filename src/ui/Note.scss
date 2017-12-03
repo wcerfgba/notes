@@ -1,5 +1,5 @@
-@import '../canvas/breakpoints';
-@import '../canvas/colours';
+@import './canvas/breakpoints';
+@import './canvas/colours';
 
 .note {
   display: grid;
@@ -46,12 +46,12 @@
     flex-wrap: wrap;
     align-content: flex-start;
 
-    @media 
-    (min-width: $breakpoint-tablet-lower) and 
+    @media
+    (min-width: $breakpoint-tablet-lower) and
     (max-width: $breakpoint-tablet-upper) {
       grid-column: 2;
     }
-   
+
     .note-tag {
       border-top: 1px solid $colour-grey;
       margin: 0 0.5rem 0.5rem 0;

@@ -1,15 +1,11 @@
 import * as Rx from 'rxjs';
 import { Database, PersistentNote } from './';
 
-const AllNotesObservable : Rx.Observable<Array<PersistentNote>> =
-  Rx.Observable.concat(
+const AllNotesObservable : () => Rx.Observable<Array<PersistentNote>> =
+  () => Rx.Observable.concat(
     Rx.Observable.fromPromise(Database.getAll()),
     Rx.Observable.fromEvent(
-      Database
-      .changes({
-        live: true,
-        since: 'now',
-      }),
+      Database.changes(),
       'change'
     )
     .concatMap(change => Database.getAll())

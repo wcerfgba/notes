@@ -13,7 +13,7 @@ export default class AllNotesList extends Component<AllNotesListProps, AllNotesL
     this.setState({
       allNotesSubscription:
         this.state.allNotesSubscription
-        || AllNotesObservable.subscribe(this.allNotesObserver)
+        || AllNotesObservable().subscribe(this.allNotesObserver)
     });
   }
 
