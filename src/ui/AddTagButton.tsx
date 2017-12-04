@@ -45,7 +45,6 @@ export default class AddTagButton extends Component<AddTagButtonProps, AddTagBut
 }
 
 export type AddTagButtonProps = {
-  parent : JSX.Element,
   note : PersistentNote
 };
 

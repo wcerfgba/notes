@@ -1,0 +1,273 @@
+<svg width="1112pt" height="560pt" viewBox="0.00 0.00 1112.00 560.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 556)">
+<title>v2_deps</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-556 1108,-556 1108,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_vendor</title>
+<polygon fill="none" stroke="#000000" points="648.7528,-8 648.7528,-84.8 1095.8524,-84.8 1095.8524,-8 648.7528,-8"></polygon>
+<text text-anchor="middle" x="872.3026" y="-68.2" font-family="Times,serif" font-size="14.00" fill="#000000">node_modules/</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_persistence</title>
+<polygon fill="none" stroke="#000000" points="418.583,-8 418.583,-254.4 640.6052,-254.4 640.6052,-8 418.583,-8"></polygon>
+<text text-anchor="middle" x="529.5941" y="-237.8" font-family="Times,serif" font-size="14.00" fill="#000000">persistence/</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_ui</title>
+<polygon fill="none" stroke="#000000" points="8.1476,-92.8 8.1476,-508 410.4354,-508 410.4354,-92.8 8.1476,-92.8"></polygon>
+<text text-anchor="middle" x="209.2915" y="-491.4" font-family="Times,serif" font-size="14.00" fill="#000000">ui/</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_ui_components</title>
+<polygon fill="none" stroke="#000000" points="174.155,-100.8 174.155,-177.6 375.8081,-177.6 375.8081,-100.8 174.155,-100.8"></polygon>
+<text text-anchor="middle" x="274.9815" y="-161" font-family="Times,serif" font-size="14.00" fill="#000000">components/</text>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_ui_canvas</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="5,2" points="173.1365,-398.4 173.1365,-475.2 402.2878,-475.2 402.2878,-398.4 173.1365,-398.4"></polygon>
+<text text-anchor="middle" x="287.7122" y="-458.6" font-family="Times,serif" font-size="14.00" fill="#000000">canvas/</text>
+</g>
+<!-- PouchDB -->
+<g id="node1" class="node">
+<title>PouchDB</title>
+<ellipse fill="none" stroke="#000000" cx="706.7601" cy="-34" rx="48.6772" ry="18"></ellipse>
+<text text-anchor="middle" x="706.7601" y="-29.8" font-family="Times,serif" font-size="14.00" fill="#000000">PouchDB</text>
+</g>
+<!-- Preact -->
+<g id="node2" class="node">
+<title>Preact</title>
+<ellipse fill="none" stroke="#000000" cx="892.7601" cy="-34" rx="35.3276" ry="18"></ellipse>
+<text text-anchor="middle" x="892.7601" y="-29.8" font-family="Times,serif" font-size="14.00" fill="#000000">Preact</text>
+</g>
+<!-- NormalizeCSS -->
+<g id="node3" class="node">
+<title>NormalizeCSS</title>
+<ellipse fill="none" stroke="#000000" cx="1017.7601" cy="-34" rx="68.9351" ry="18"></ellipse>
+<text text-anchor="middle" x="1017.7601" y="-29.8" font-family="Times,serif" font-size="14.00" fill="#000000">NormalizeCSS</text>
+</g>
+<!-- RxJS -->
+<g id="node4" class="node">
+<title>RxJS</title>
+<ellipse fill="none" stroke="#000000" cx="806.7601" cy="-34" rx="31.3583" ry="18"></ellipse>
+<text text-anchor="middle" x="806.7601" y="-29.8" font-family="Times,serif" font-size="14.00" fill="#000000">RxJS</text>
+</g>
+<!-- dummy_persistence -->
+<!-- dummy_persistence&#45;&gt;RxJS -->
+<g id="edge1" class="edge">
+<title>dummy_persistence-&gt;RxJS</title>
+<path fill="none" stroke="#000000" d="M640.6017,-204C676.2147,-204 796.2838,-204 796.2838,-204 796.2838,-204 796.2838,-61.236 796.2838,-61.236"></path>
+<polygon fill="#000000" stroke="#000000" points="799.7839,-61.236 796.2838,-51.236 792.7839,-61.2361 799.7839,-61.236"></polygon>
+</g>
+<!-- Database -->
+<g id="node6" class="node">
+<title>Database</title>
+<ellipse fill="none" stroke="#000000" cx="473.7601" cy="-127" rx="46.345" ry="18"></ellipse>
+<text text-anchor="middle" x="473.7601" y="-122.8" font-family="Times,serif" font-size="14.00" fill="#000000">Database</text>
+</g>
+<!-- Database&#45;&gt;PouchDB -->
+<g id="edge2" class="edge">
+<title>Database-&gt;PouchDB</title>
+<path fill="none" stroke="#000000" d="M520.3512,-127C588.3465,-127 706.7601,-127 706.7601,-127 706.7601,-127 706.7601,-62.3738 706.7601,-62.3738"></path>
+<polygon fill="#000000" stroke="#000000" points="710.2602,-62.3738 706.7601,-52.3738 703.2602,-62.3738 710.2602,-62.3738"></polygon>
+</g>
+<!-- PersistentNote -->
+<g id="node7" class="node">
+<title>PersistentNote</title>
+<ellipse fill="none" stroke="#000000" cx="494.7601" cy="-34" rx="67.2081" ry="18"></ellipse>
+<text text-anchor="middle" x="494.7601" y="-29.8" font-family="Times,serif" font-size="14.00" fill="#000000">PersistentNote</text>
+</g>
+<!-- Database&#45;&gt;PersistentNote -->
+<g id="edge3" class="edge">
+<title>Database-&gt;PersistentNote</title>
+<path fill="none" stroke="#000000" d="M489.2572,-109.9424C489.2572,-109.9424 489.2572,-62.2213 489.2572,-62.2213"></path>
+<polygon fill="#000000" stroke="#000000" points="492.7573,-62.2213 489.2572,-52.2213 485.7573,-62.2213 492.7573,-62.2213"></polygon>
+</g>
+<!-- PersistentNote&#45;&gt;Database -->
+<g id="edge4" class="edge">
+<title>PersistentNote-&gt;Database</title>
+<path fill="none" stroke="#000000" d="M458.3317,-49.3571C458.3317,-49.3571 458.3317,-99.722 458.3317,-99.722"></path>
+<polygon fill="#000000" stroke="#000000" points="454.8318,-99.7219 458.3317,-109.722 461.8318,-99.722 454.8318,-99.7219"></polygon>
+</g>
+<!-- AllNotesObservable -->
+<g id="node8" class="node">
+<title>AllNotesObservable</title>
+<ellipse fill="none" stroke="#000000" cx="518.7601" cy="-204" rx="89.7441" ry="18"></ellipse>
+<text text-anchor="middle" x="518.7601" y="-199.8" font-family="Times,serif" font-size="14.00" fill="#000000">AllNotesObservable</text>
+</g>
+<!-- AllNotesObservable&#45;&gt;Database -->
+<g id="edge5" class="edge">
+<title>AllNotesObservable-&gt;Database</title>
+<path fill="none" stroke="#000000" d="M489.7511,-186.9112C489.7511,-186.9112 489.7511,-154.041 489.7511,-154.041"></path>
+<polygon fill="#000000" stroke="#000000" points="493.2512,-154.041 489.7511,-144.041 486.2512,-154.0411 493.2512,-154.041"></polygon>
+</g>
+<!-- AllNotesObservable&#45;&gt;PersistentNote -->
+<g id="edge6" class="edge">
+<title>AllNotesObservable-&gt;PersistentNote</title>
+<path fill="none" stroke="#0000ff" stroke-dasharray="1,5" d="M541.1483,-186.4473C541.1483,-186.4473 541.1483,-57.364 541.1483,-57.364"></path>
+<polygon fill="#0000ff" stroke="#0000ff" points="544.6484,-57.364 541.1483,-47.364 537.6484,-57.364 544.6484,-57.364"></polygon>
+</g>
+<!-- dummy_ui -->
+<!-- dummy_ui&#45;&gt;Preact -->
+<g id="edge7" class="edge">
+<title>dummy_ui-&gt;Preact</title>
+<path fill="none" stroke="#000000" d="M410.4339,-479C611.7977,-479 861.6784,-479 861.6784,-479 861.6784,-479 861.6784,-52.4921 861.6784,-52.4921"></path>
+<polygon fill="#000000" stroke="#000000" points="865.1785,-52.4921 861.6784,-42.4921 858.1785,-52.4921 865.1785,-52.4921"></polygon>
+</g>
+<!-- dummy_ui&#45;&gt;RxJS -->
+<g id="edge8" class="edge">
+<title>dummy_ui-&gt;RxJS</title>
+<path fill="none" stroke="#000000" d="M410.4353,-352C595.9851,-352 817.2365,-352 817.2365,-352 817.2365,-352 817.2365,-61.0971 817.2365,-61.0971"></path>
+<polygon fill="#000000" stroke="#000000" points="820.7366,-61.097 817.2365,-51.0971 813.7366,-61.0971 820.7366,-61.097"></polygon>
+</g>
+<!-- Note -->
+<g id="node10" class="node">
+<title>Note</title>
+<ellipse fill="none" stroke="#000000" cx="151.7601" cy="-280" rx="29.6147" ry="18"></ellipse>
+<text text-anchor="middle" x="151.7601" y="-275.8" font-family="Times,serif" font-size="14.00" fill="#000000">Note</text>
+</g>
+<!-- Note&#45;&gt;Database -->
+<g id="edge10" class="edge">
+<title>Note-&gt;Database</title>
+<path fill="none" stroke="#000000" d="M177.9475,-289C239.4624,-289 388.0266,-289 388.0266,-289 388.0266,-289 388.0266,-133 388.0266,-133 388.0266,-133 419.8888,-133 419.8888,-133"></path>
+<polygon fill="#000000" stroke="#000000" points="419.8888,-136.5001 429.8888,-133 419.8887,-129.5001 419.8888,-136.5001"></polygon>
+</g>
+<!-- Note&#45;&gt;PersistentNote -->
+<g id="edge9" class="edge">
+<title>Note-&gt;PersistentNote</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="1,5" d="M181.8535,-280C243.4984,-280 378.3796,-280 378.3796,-280 378.3796,-280 378.3796,-43 378.3796,-43 378.3796,-43 426.2289,-43 426.2289,-43"></path>
+<polygon fill="#ff0000" stroke="#ff0000" points="426.2289,-46.5001 436.2289,-43 426.2289,-39.5001 426.2289,-46.5001"></polygon>
+</g>
+<!-- AddTagButton -->
+<g id="node11" class="node">
+<title>AddTagButton</title>
+<ellipse fill="none" stroke="#000000" cx="299.7601" cy="-204" rx="68.9448" ry="18"></ellipse>
+<text text-anchor="middle" x="299.7601" y="-199.8" font-family="Times,serif" font-size="14.00" fill="#000000">AddTagButton</text>
+</g>
+<!-- Note&#45;&gt;AddTagButton -->
+<g id="edge11" class="edge">
+<title>Note-&gt;AddTagButton</title>
+<path fill="none" stroke="#000000" d="M177.8734,-271C205.6118,-271 245.5053,-271 245.5053,-271 245.5053,-271 245.5053,-225.3656 245.5053,-225.3656"></path>
+<polygon fill="#000000" stroke="#000000" points="249.0054,-225.3656 245.5053,-215.3656 242.0054,-225.3657 249.0054,-225.3656"></polygon>
+</g>
+<!-- EditableTag -->
+<g id="node12" class="node">
+<title>EditableTag</title>
+<ellipse fill="none" stroke="#000000" cx="151.7601" cy="-204" rx="58.4648" ry="18"></ellipse>
+<text text-anchor="middle" x="151.7601" y="-199.8" font-family="Times,serif" font-size="14.00" fill="#000000">EditableTag</text>
+</g>
+<!-- Note&#45;&gt;EditableTag -->
+<g id="edge12" class="edge">
+<title>Note-&gt;EditableTag</title>
+<path fill="none" stroke="#000000" d="M151.7601,-261.9891C151.7601,-261.9891 151.7601,-232.145 151.7601,-232.145"></path>
+<polygon fill="#000000" stroke="#000000" points="155.2602,-232.145 151.7601,-222.145 148.2602,-232.1451 155.2602,-232.145"></polygon>
+</g>
+<!-- AddTagButton&#45;&gt;Database -->
+<g id="edge14" class="edge">
+<title>AddTagButton-&gt;Database</title>
+<path fill="none" stroke="#000000" d="M365.0972,-210C375.6541,-210 383.2031,-210 383.2031,-210 383.2031,-210 383.2031,-121 383.2031,-121 383.2031,-121 419.808,-121 419.808,-121"></path>
+<polygon fill="#000000" stroke="#000000" points="419.808,-124.5001 429.808,-121 419.8079,-117.5001 419.808,-124.5001"></polygon>
+</g>
+<!-- AddTagButton&#45;&gt;PersistentNote -->
+<g id="edge13" class="edge">
+<title>AddTagButton-&gt;PersistentNote</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="1,5" d="M364.8009,-198C370.1498,-198 373.5561,-198 373.5561,-198 373.5561,-198 373.5561,-34 373.5561,-34 373.5561,-34 417.0707,-34 417.0707,-34"></path>
+<polygon fill="#ff0000" stroke="#ff0000" points="417.0708,-37.5001 427.0707,-34 417.0707,-30.5001 417.0708,-37.5001"></polygon>
+</g>
+<!-- SingleLineTextField -->
+<g id="node13" class="node">
+<title>SingleLineTextField</title>
+<ellipse fill="none" stroke="#000000" cx="274.7601" cy="-127" rx="90.9264" ry="18"></ellipse>
+<text text-anchor="middle" x="274.7601" y="-122.8" font-family="Times,serif" font-size="14.00" fill="#000000">SingleLineTextField</text>
+</g>
+<!-- AddTagButton&#45;&gt;SingleLineTextField -->
+<g id="edge15" class="edge">
+<title>AddTagButton-&gt;SingleLineTextField</title>
+<path fill="none" stroke="#000000" d="M298.2555,-185.7521C298.2555,-185.7521 298.2555,-154.5869 298.2555,-154.5869"></path>
+<polygon fill="#000000" stroke="#000000" points="301.7556,-154.5869 298.2555,-144.5869 294.7556,-154.587 301.7556,-154.5869"></polygon>
+</g>
+<!-- EditableTag&#45;&gt;Database -->
+<g id="edge17" class="edge">
+<title>EditableTag-&gt;Database</title>
+<path fill="none" stroke="#000000" d="M201.2604,-194.1587C201.2604,-182.6052 201.2604,-165 201.2604,-165 201.2604,-165 459.3197,-165 459.3197,-165 459.3197,-165 459.3197,-154.2211 459.3197,-154.2211"></path>
+<polygon fill="#000000" stroke="#000000" points="462.8198,-154.221 459.3197,-144.2211 455.8198,-154.2211 462.8198,-154.221"></polygon>
+</g>
+<!-- EditableTag&#45;&gt;PersistentNote -->
+<g id="edge16" class="edge">
+<title>EditableTag-&gt;PersistentNote</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="1,5" d="M138.6626,-186.1824C138.6626,-140.9064 138.6626,-25 138.6626,-25 138.6626,-25 426.3566,-25 426.3566,-25"></path>
+<polygon fill="#ff0000" stroke="#ff0000" points="426.3567,-28.5001 436.3566,-25 426.3566,-21.5001 426.3567,-28.5001"></polygon>
+</g>
+<!-- EditableTag&#45;&gt;SingleLineTextField -->
+<g id="edge18" class="edge">
+<title>EditableTag-&gt;SingleLineTextField</title>
+<path fill="none" stroke="#000000" d="M192.5287,-190.938C192.5287,-190.938 192.5287,-144.7223 192.5287,-144.7223"></path>
+<polygon fill="#000000" stroke="#000000" points="196.0288,-144.7222 192.5287,-134.7223 189.0288,-144.7223 196.0288,-144.7222"></polygon>
+</g>
+<!-- AllNotesList -->
+<g id="node14" class="node">
+<title>AllNotesList</title>
+<ellipse fill="none" stroke="#000000" cx="78.7601" cy="-424" rx="60.8467" ry="18"></ellipse>
+<text text-anchor="middle" x="78.7601" y="-419.8" font-family="Times,serif" font-size="14.00" fill="#000000">AllNotesList</text>
+</g>
+<!-- AllNotesList&#45;&gt;AllNotesObservable -->
+<g id="edge20" class="edge">
+<title>AllNotesList-&gt;AllNotesObservable</title>
+<path fill="none" stroke="#000000" d="M116.4327,-409.7718C116.4327,-399.7092 116.4327,-388 116.4327,-388 116.4327,-388 518.7601,-388 518.7601,-388 518.7601,-388 518.7601,-232.3153 518.7601,-232.3153"></path>
+<polygon fill="#000000" stroke="#000000" points="522.2602,-232.3153 518.7601,-222.3153 515.2602,-232.3154 522.2602,-232.3153"></polygon>
+</g>
+<!-- NoteList -->
+<g id="node15" class="node">
+<title>NoteList</title>
+<ellipse fill="none" stroke="#000000" cx="114.7601" cy="-352" rx="44.6588" ry="18"></ellipse>
+<text text-anchor="middle" x="114.7601" y="-347.8" font-family="Times,serif" font-size="14.00" fill="#000000">NoteList</text>
+</g>
+<!-- AllNotesList&#45;&gt;NoteList -->
+<g id="edge19" class="edge">
+<title>AllNotesList-&gt;NoteList</title>
+<path fill="none" stroke="#000000" d="M93.1819,-406.2022C93.1819,-406.2022 93.1819,-378.119 93.1819,-378.119"></path>
+<polygon fill="#000000" stroke="#000000" points="96.682,-378.1189 93.1819,-368.119 89.682,-378.119 96.682,-378.1189"></polygon>
+</g>
+<!-- NoteList&#45;&gt;Note -->
+<g id="edge21" class="edge">
+<title>NoteList-&gt;Note</title>
+<path fill="none" stroke="#000000" d="M140.7713,-337.0816C140.7713,-337.0816 140.7713,-306.9178 140.7713,-306.9178"></path>
+<polygon fill="#000000" stroke="#000000" points="144.2714,-306.9177 140.7713,-296.9178 137.2714,-306.9178 144.2714,-306.9177"></polygon>
+</g>
+<!-- breakpoints -->
+<g id="node16" class="node">
+<title>breakpoints</title>
+<ellipse fill="none" stroke="#000000" cx="336.7601" cy="-424" rx="56.1802" ry="18"></ellipse>
+<text text-anchor="middle" x="336.7601" y="-419.8" font-family="Times,serif" font-size="14.00" fill="#000000">breakpoints</text>
+</g>
+<!-- colours -->
+<g id="node17" class="node">
+<title>colours</title>
+<ellipse fill="none" stroke="#000000" cx="220.7601" cy="-424" rx="39.4254" ry="18"></ellipse>
+<text text-anchor="middle" x="220.7601" y="-419.8" font-family="Times,serif" font-size="14.00" fill="#000000">colours</text>
+</g>
+<!-- app -->
+<g id="node18" class="node">
+<title>app</title>
+<ellipse fill="none" stroke="#000000" cx="892.7601" cy="-534" rx="27" ry="18"></ellipse>
+<text text-anchor="middle" x="892.7601" y="-529.8" font-family="Times,serif" font-size="14.00" fill="#000000">app</text>
+</g>
+<!-- app&#45;&gt;Preact -->
+<g id="edge22" class="edge">
+<title>app-&gt;Preact</title>
+<path fill="none" stroke="#000000" d="M892.7601,-515.9093C892.7601,-515.9093 892.7601,-62.0663 892.7601,-62.0663"></path>
+<polygon fill="#000000" stroke="#000000" points="896.2602,-62.0663 892.7601,-52.0663 889.2602,-62.0664 896.2602,-62.0663"></polygon>
+</g>
+<!-- app&#45;&gt;NormalizeCSS -->
+<g id="edge24" class="edge">
+<title>app-&gt;NormalizeCSS</title>
+<path fill="none" stroke="#000000" d="M919.8833,-534C956.6468,-534 1017.7601,-534 1017.7601,-534 1017.7601,-534 1017.7601,-62.0907 1017.7601,-62.0907"></path>
+<polygon fill="#000000" stroke="#000000" points="1021.2602,-62.0906 1017.7601,-52.0907 1014.2602,-62.0907 1021.2602,-62.0906"></polygon>
+</g>
+<!-- app&#45;&gt;AllNotesList -->
+<g id="edge23" class="edge">
+<title>app-&gt;AllNotesList</title>
+<path fill="none" stroke="#000000" d="M865.6769,-534C724.4354,-534 78.7601,-534 78.7601,-534 78.7601,-534 78.7601,-452.1643 78.7601,-452.1643"></path>
+<polygon fill="#000000" stroke="#000000" points="82.2602,-452.1642 78.7601,-442.1643 75.2602,-452.1643 82.2602,-452.1642"></polygon>
+</g>
+</g>
+</svg>
