@@ -1,12 +1,14 @@
 @import '~normalize.css';
 @import 'ui/canvas/breakpoints';
+@import 'ui/canvas/colours';
 
-html, body {
+html {
   font-family: sans-serif;
+  font-size: 18px;
 }
 
 body {
-  margin: auto;
-  padding: 2rem;
+  background: $colour-ultralightgrey;
   max-width: $breakpoint-laptop-lower;
+  margin: auto;
 }

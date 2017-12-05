@@ -1,60 +1,79 @@
+@import '~react-datetime/css/react-datetime.css';
 @import './canvas/breakpoints';
 @import './canvas/colours';
 
 .note {
+  background: $colour-white;
   display: grid;
-  grid-template-columns: 1fr;
-  $note-grid-column-gap: 2rem;
-  grid-column-gap: $note-grid-column-gap;
-  margin-bottom: 1.5rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  grid-template: "time" 1rem
+                 "text"
+                 "tags";
+  grid-row-gap: 2rem;
 
   @media (min-width: $breakpoint-tablet-lower) {
-    $min-third: ($breakpoint-tablet-lower - 2*$note-grid-column-gap) / 3;
-    grid-template-columns: minmax($min-third, 1fr) 4fr;
+    grid-template: "time text"
+                   "time tags"
+                   / 1fr 5fr;
+    grid-column-gap: 2rem;
   }
 
   @media (min-width: $breakpoint-laptop-lower) {
-    $min-fifth: ($breakpoint-laptop-lower - 2*$note-grid-column-gap) / 5;
-    grid-template-columns: minmax($min-fifth, 1fr) 3fr minmax(0, 1fr);
-  }
-
-  @mixin note-child {
-    margin-bottom: 1rem;
+    grid-template: "time text tags"
+                   / 1fr 4fr 1fr;
   }
 
   .note-time {
-    @include note-child;
+    grid-area: time;
 
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
+    .form-control {
+      width: 100%;
+      border: none;
+    }
 
-    @media (min-width: $breakpoint-tablet-lower) {
-      flex-direction: column;
-      justify-content: flex-start;
+    .note-time-inner {
+      display: flex;
+      justify-content: space-between;
+
+      @media (min-width: $breakpoint-tablet-lower) {
+        flex-direction: column;
+        justify-content: flex-start;
+
+        .note-time-date {
+          margin-bottom: 0.5rem;
+        }
+      }
     }
   }
 
   .note-text {
-    @include note-child;
+    grid-area: text;
+
+    textarea {
+      width: 100%;
+      height: 5rem;
+      border: none;
+      border-bottom: 1px solid $colour-grey;
+      resize: vertical;
+    }
   }
 
   .note-tags {
-    @include note-child;
+    grid-area: tags;
 
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-
-    @media
-    (min-width: $breakpoint-tablet-lower) and
-    (max-width: $breakpoint-tablet-upper) {
-      grid-column: 2;
-    }
+    margin-top: -0.5rem;
 
     .note-tag {
       border-top: 1px solid $colour-grey;
-      margin: 0 0.5rem 0.5rem 0;
+      margin: 0 1rem 0.5rem 0;
+    }
+
+    .note-tags-add-button {
+      margin: 0 1rem 0.5rem 0;
     }
   }
 }
